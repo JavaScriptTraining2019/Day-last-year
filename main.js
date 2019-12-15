@@ -33,17 +33,24 @@ let dateLastYear = (function(){
         jsTimePopUpDomEl.classList.remove("is-hidden");
     }
 
+    function closeTimePopup(){
+        let jsTimePopUpDomEl = popUpDomEl().divTimePopup;
+
+        jsTimePopUpDomEl.classList.add("is-hidden");
+    }
+
     // function displayBlock(){
     //     let popUpDomEl = popUpDomEl();
     //     popUpDomEl.classList.add(".u-display-block");
     // }
 
     return{
-        getDay: dayMessage
+        getDay: dayMessage,
+        closePopup: closeTimePopup
     }
 
 })();
 
-document.querySelector("#cta-time").addEventListener("click", function(){
-    dateLastYear.getDay();
-});
+document.querySelector("#cta-time").addEventListener("click",  dateLastYear.getDay);
+
+document.querySelector("#time-popup").addEventListener("click", dateLastYear.closePopup);
